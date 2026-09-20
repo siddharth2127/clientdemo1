@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevatePath | Career Coaching</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+    :root {
+      --bg-color: #171f2c;
+      --card-bg: #1d283a;
+      --accent-color: #cfa645;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-color: #243147;
+      --text-dark: #1e1e1e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      animation: fadeIn 0.4s ease-out;
+    }
+    @view-transition {
+      navigation: auto;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+    
+    /* Buttons */
+    .btn {
+      background-color: var(--accent-color);
+      color: var(--text-dark);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.1s ease;
+      display: inline-block;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 110px 0 90px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100%;
+      background: radial-gradient(
+        circle at 75% 30%,
+        rgba(207, 166, 69, 0.15) 0%,
+        rgba(207, 166, 69, 0.05) 40%,
+        transparent 70%
+      );
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin: 0 0 20px;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin: 0 0 48px;
+      padding: 0 20px;
+    }
+    .hero .btn {
+      padding: 12px 32px;
+      font-size: 1rem;
+    }
+
+    /* Programs */
+    .programs {
+      padding: 0 0 100px;
+      position: relative;
+      z-index: 1;
+    }
+    .programs-inner {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 6px;
+      padding: 32px 40px;
+      flex: 1;
+      max-width: 480px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: border-color 0.3s ease;
+    }
+    .card:hover {
+      border-color: var(--accent-color);
+    }
+    .card.featured {
+      /* static border removed in favor of hover */
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0 0 16px;
+      color: var(--text-primary);
+    }
+    .card p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0 0 32px;
+      flex-grow: 1;
+    }
+    .card .btn {
+      align-self: flex-start;
+      padding: 10px 28px;
+    }
+
+    /* Testimonial */
+    .testimonial {
+      border-top: 1px solid var(--border-color);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .testimonial-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .testimonial blockquote {
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+    .testimonial .author {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 0;
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-links a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        padding: 60px 0 50px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+        padding: 0;
+      }
+      .programs {
+        padding: 0 0 60px;
+      }
+      .programs-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 100%;
+        padding: 24px;
+      }
+      .testimonial {
+        padding: 60px 0 40px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">elevatepath</a>
+      <nav class="nav-links">
+        <a href="about.html">about</a>
+        <a href="programs.html">programs</a>
+        <a href="testimonials.html">testimonials</a>
+      </nav>
+      <a href="https://calendly.com/sidd-cw21/intro-call" class="btn" target="_blank" rel="noopener noreferrer">book a call</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>clarity for your next career move</h1>
+        <p>1:1 executive coaching for professionals ready to lead with confidence.</p>
+        <a href="#" class="btn">schedule a free consult</a>
+      </div>
+    </section>
+
+    <section class="programs">
+      <div class="container programs-inner">
+        <div class="card">
+          <h3>career clarity sprint</h3>
+          <p>a 4-week program to define your next role and path</p>
+          <a href="career-clarity-sprint.html" class="btn">learn more</a>
+        </div>
+        <div class="card featured">
+          <h3>executive coaching retainer</h3>
+          <p>ongoing monthly coaching for leadership growth</p>
+          <a href="executive-coaching-retainer.html" class="btn">learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="container testimonial-content">
+        <blockquote>"working with ElevatePath gave me the clarity to finally go after the role I wanted."</blockquote>
+        <div class="author">&mdash; former client, VP of Marketing</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; elevatepath coaching</div>
+      <div class="footer-links">
+        <a href="#">linkedin</a>
+        <span>&middot;</span>
+        <a href="#">contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

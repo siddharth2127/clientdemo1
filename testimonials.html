@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevatePath | Testimonials</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+    :root {
+      --bg-color: #171f2c;
+      --card-bg: #1d283a;
+      --accent-color: #cfa645;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-color: #243147;
+      --text-dark: #1e1e1e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      animation: fadeIn 0.4s ease-out;
+    }
+    @view-transition {
+      navigation: auto;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding: 24px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+    .nav-links a.active {
+      color: var(--accent-color);
+    }
+    
+    /* Buttons */
+    .btn {
+      background-color: var(--accent-color);
+      color: var(--text-dark);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.1s ease;
+      display: inline-block;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 90px 0 70px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(
+        circle at 0% 50%,
+        rgba(207, 166, 69, 0.25) 0%,
+        rgba(207, 166, 69, 0.05) 50%,
+        transparent 80%
+      );
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 400;
+      margin: 0 0 16px;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 20px;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 0 0 100px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 40px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+    .quote-icon {
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+    .testimonial-card p.quote-text {
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0 0 32px;
+      flex-grow: 1;
+    }
+    .testimonial-author {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 1rem;
+      margin: 0 0 4px;
+    }
+    .testimonial-title {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 0;
+      margin-top: auto;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-links a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        padding: 60px 0 40px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+        padding: 0;
+      }
+      .testimonials {
+        padding: 0 0 60px;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .testimonial-card {
+        padding: 24px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo">elevatepath</a>
+      <nav class="nav-links">
+        <a href="about.html">about</a>
+        <a href="programs.html">programs</a>
+        <a href="testimonials.html" class="active">testimonials</a>
+      </nav>
+      <a href="https://calendly.com/sidd-cw21/intro-call" class="btn" target="_blank" rel="noopener noreferrer">book a call</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>what clients say</h1>
+        <p>real outcomes from real coaching relationships</p>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="quote-text">working with ElevatePath gave me the clarity to finally go after the role I wanted.</p>
+          <div>
+            <p class="testimonial-author">Priya S.</p>
+            <p class="testimonial-title">VP of Marketing</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="quote-text">the accountability and structure changed how I show up as a leader.</p>
+          <div>
+            <p class="testimonial-author">Arjun M.</p>
+            <p class="testimonial-title">Engineering Director</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="quote-text">I landed the promotion I'd been putting off pursuing for two years.</p>
+          <div>
+            <p class="testimonial-author">Meera K.</p>
+            <p class="testimonial-title">Product Lead</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-icon">"</div>
+          <p class="quote-text">clear, direct, and exactly the accountability I needed.</p>
+          <div>
+            <p class="testimonial-author">Rohan T.</p>
+            <p class="testimonial-title">Founder</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; elevatepath coaching</div>
+      <div class="footer-links">
+        <a href="#">linkedin</a>
+        <span>&middot;</span>
+        <a href="#">contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

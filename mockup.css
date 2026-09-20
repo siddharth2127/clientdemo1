@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  background-color: #0e1a2b; /* prevents white gap below hero */
+}
+
+
+.hero {
+  position: relative;
+  background-color: #0e1a2b; /* navy base */
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #c9a447 0%,
+    rgba(201, 164, 71, 0.4) 40%,
+    rgba(201, 164, 71, 0) 70%
+  );
+  filter: blur(40px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1; /* keeps text above the blob */
+}
