@@ -86,8 +86,8 @@ mobile_css_replacement = '''    @media (max-width: 768px) {
         filter: blur(50px);
       }'''
 
-old_btn = '<a href="https://calendly.com/sidd-cw21/intro-call" class="btn" target="_blank" rel="noopener noreferrer">book a call</a>'
-new_btn = '<a href="https://calendly.com/sidd-cw21/intro-call" class="btn header-cta" target="_blank" rel="noopener noreferrer">book a call</a>'
+old_btn = '<a href="https://calendly.com/sidd-cw21/new-meeting" class="btn" target="_blank" rel="noopener noreferrer">book a call</a>'
+new_btn = '<a href="https://calendly.com/sidd-cw21/new-meeting" class="btn header-cta" target="_blank" rel="noopener noreferrer">book a call</a>'
 
 for f in files:
     path = os.path.join('c:\\design', f)
